@@ -2,7 +2,7 @@
 
 FFMPEG=ffmpeg
 FFPROBE=ffprobe
-CLIP_LENGTH=30
+CLIP_LENGTH=3
 FPS=11
 
 if [ -n "$1" ]
@@ -16,5 +16,5 @@ then
 	max_time=$(($duration_secs - $CLIP_LENGTH))
 	start_time=$(( RANDOM % $max_time ))
 	# ok now let that shit run
-	$FFMPEG -i "$1" -ss $start_time -t $CLIP_LENGTH -vf fps=$FPS img%03d.jpg
+	$FFMPEG -i "$1" -ss $start_time -t $CLIP_LENGTH -vf scale=125:125 img%03d.jpg
 fi
