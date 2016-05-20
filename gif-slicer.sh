@@ -16,5 +16,6 @@ then
 	max_time=$(($duration_secs - $CLIP_LENGTH))
 	start_time=$(( RANDOM % $max_time ))
 	# ok now let that shit run
-	$FFMPEG -i "$1" -ss $start_time -t $CLIP_LENGTH -vf scale=125:-1 clip.gif
+	# TODO: automatically determine narrowest bit of the image
+	$FFMPEG -i "$1" -ss $start_time -t $CLIP_LENGTH -vf crop="234:234" clip.gif
 fi
